@@ -36,17 +36,14 @@ public class TelefonoMovil {
 
     public boolean removeContact (Contacto contacto){
 
-
         if (findContact(contacto)>-1){
             myContacts.remove(findContact(contacto));
 
-           return true;
+            return true;
         }
 
         return false; //Si el contacto existe y se puede quitar = true
     }
-
-
 
     private int findContact (Contacto contacto){
 
@@ -58,7 +55,6 @@ public class TelefonoMovil {
 
     }
 
-
     private int findContact(String contacto){
 
 
@@ -67,13 +63,12 @@ public class TelefonoMovil {
 
             if (myContacts.get(cont).getName().equalsIgnoreCase(contacto)){
 
-               return cont;
+                return cont;
             }
         }
         return -1; // Si = true ha encontrado el contacto en la lista
 
     }
-
 
     public Contacto queryContact (String nombrec){
 
@@ -102,7 +97,4 @@ public class TelefonoMovil {
         this.myContacts=myContacts;
 
     }
-
-
-
 }
