@@ -42,12 +42,5 @@ public class Contacto {
         this.name=name;
         this.phoneNumber=phoneNumber;
 
-
     }
-
-
-
-
-
-
 }
