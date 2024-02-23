@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainContactos {
@@ -16,20 +17,18 @@ public class MainContactos {
         System.out.println("4 = Eliminar contacto");
         System.out.println("5 = Buscar contacto por nombre");
         System.out.println("6 = Volver a imprimir las opciones");
-
     }
-
     public static void printContacts(){
 
         System.out.println("Estos son tus contactos:");
         telefonoMovil.printContacts();
 
     }
-
-    public static void anadircontacto (){
+    public static void anadircontacto () {
 
         System.out.println("Añade el nombre del nuevo contacto");
-        String nombrecase2=sc.next();
+            String nombrecase2 = sc.next();
+
 
         System.out.println("Añade el numero del contacto");
         String numerocase2=sc2.next();
@@ -96,6 +95,7 @@ public class MainContactos {
         if (telefonoMovil.queryContact(nombrebuscar)!=null){
 
             System.out.println(telefonoMovil.queryContact(nombrebuscar).getName()+"--->"+telefonoMovil.queryContact(nombrebuscar).getPhoneNumber() );
+            System.out.printf("Aqui esta el contacto que buscas :");
         }
         else {
             System.out.println("No se ha encontrado el contacto");
@@ -103,9 +103,7 @@ public class MainContactos {
 
     }
 
-
     private static TelefonoMovil telefonoMovil= new TelefonoMovil("123456789");
-
 
     public static void main(String[] args) {
 
@@ -115,9 +113,16 @@ public class MainContactos {
 
         while (continuar){
 
-            System.out.println("Elige una opcion.");
-            opcion=sc.nextInt();
+                System.out.println("Elige una opcion. Para ver de nuevo la lista de opciones introduce 6");
+                opcion=sc.nextInt();
 
+                if (opcion<0||opcion>6){
+                    do {
+                        System.out.println("Esa opcion no es valida, introduce una de las siguientes opciones : ");
+                        impirmenu();
+                        opcion=sc.nextInt();
+                    }while (opcion<0||opcion>6);
+                }
 
             switch (opcion){
 
@@ -139,27 +144,17 @@ public class MainContactos {
                     break;
 
                 case 4: // Quitar un contacto
-
                     quitarcontacto();
-                   break;
+                    break;
 
                 case 5:  //busca contacto por nombre
-
                     buscarContacto();
                     break;
 
-
+                case 6:   //Volver a imprimir opciones
+                    impirmenu();
+                    break;
             }
-
-
-
         }
-
-
     }
-
-
-
-
-
 }
